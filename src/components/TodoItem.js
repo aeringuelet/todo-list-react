@@ -8,21 +8,20 @@ const TodoItem = ({ data, setDone }) => {
         setDone(changedItem);
     }
 
-    let classes = 'list-group-item list-group-item-action flex-column align-items-start';
-    if(isDone) {
-        classes += ' active';
-    }
+    let activeClass = "bg-secondary";
+    if (isDone) {
+		activeClass = "bg-success";
+	}
 
     return (
-        <div className="list-group col-md-8">
-            <a className={classes} onClick={handleClick}>
-                <div className="d-flex w-100 justify-content-between">
-                    <h5 className="mb-1">{ todo }</h5>
-                    <small>{ date }</small>
+        <div className="container d-flex justify-content-center">
+            <div className={`card text-white mb-3 col-md-6 p-0 ${activeClass}`}>
+                <div className="card-header" style={{cursor:'pointer'}} onClick={handleClick}>{ todo }</div>
+                <div className="card-body">
+                    <h4 className="card-title">{ userName } - { date }</h4>
+                    <p className="card-text">{ content }</p>
                 </div>
-                <p className="mb-1">{ content }</p>
-                <small>{ userName }</small>
-            </a>
+            </div>
         </div>
     );
 }
