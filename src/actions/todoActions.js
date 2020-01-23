@@ -75,7 +75,7 @@ export function setIsDone(todo) {
     return (dispatch) => {
         dispatch(startIsDone());
 
-        axiosClient.post('/todos', todo)
+        axiosClient.put(`/todo/${todo._id}`, todo)
             .then(response => {
                 dispatch(isDoneSuccess(response.data));
             })
